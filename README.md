@@ -1,3 +1,7 @@
+THIS IS WIP CODE - NOT FOR PRODUCTION USE - USE ONLY ON TESTNET UNTIL THIS NOTICE IS REMOVED - we are re-applying changes to bitcoinj for mazacoin. 
+
+============================================= ORIGINAL bitcoinj README ===========================================
+
 Build status: [![Build Status](https://travis-ci.org/bitcoinj/bitcoinj.png?branch=master)](https://travis-ci.org/bitcoinj/bitcoinj)
 
 ### Welcome to bitcoinj
