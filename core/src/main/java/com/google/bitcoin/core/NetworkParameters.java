@@ -43,12 +43,12 @@ public abstract class NetworkParameters implements Serializable {
     /**
      * The protocol version this library implements.
      */
-    public static final int PROTOCOL_VERSION = 70001;
+    public static final int PROTOCOL_VERSION = 70002;
 
     /**
      * The alert signing key originally owned by Satoshi, and now passed on to Gavin along with a few others.
      */
-    public static final byte[] SATOSHI_KEY = Utils.HEX.decode("04fc9702847840aaf195de8442ebecedf5b095cdbb9bc716bda9110971b28a49e0ead8564ff0db22209e0374782c093bb899692d524e9d6a6956e7c5ecbcd68284");
+    public static final byte[] SATOSHI_KEY = Utils.HEX.decode("04f09702847840aaf195de8442ebecedf5b095cdbb9bc716bda9110971b28a49e0ead8564ff0db22209e0374782c093bb899692d524e9d6a6956e7c5ecbcd68284");
 
     /** The string returned by getId() for the main, production network where people trade things. */
     public static final String ID_MAINNET = "org.bitcoin.production";
@@ -104,9 +104,9 @@ public abstract class NetworkParameters implements Serializable {
         try {
             // A script containing the difficulty bits and the following message:
             //
-            //   "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"
+            //   "February 5, 2014: The Black Hills are not for sale - 1868 Is The LAW!"
             byte[] bytes = Utils.HEX.decode
-                    ("04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73");
+                    ("04ffff001d010445466562727561727920352c20323031343a2054686520426c61636b2048696c6c7320617265206e6f7420666f722073616c65202d203138363820497320546865204c415721");
             t.addInput(new TransactionInput(n, t, bytes));
             ByteArrayOutputStream scriptPubKeyBytes = new ByteArrayOutputStream();
             Script.writeBytes(scriptPubKeyBytes, Utils.HEX.decode
@@ -120,9 +120,9 @@ public abstract class NetworkParameters implements Serializable {
         genesisBlock.addTransaction(t);
         return genesisBlock;
     }
-
-    public static final int TARGET_TIMESPAN = 14 * 24 * 60 * 60;  // 2 weeks per difficulty cycle, on average.
-    public static final int TARGET_SPACING = 10 * 60;  // 10 minutes per block.
+    public static final int TARGET_TIMESPAN = 60 * 2 * 4;  // 8 minutes per difficulty cycle, on average. (changes on block 100K)
+    public static final int TARGET_TIMESPAN_NEW = 60 * 2 * 4;  // 2 minutes per difficulty cycle, on average. (takes effect on block 100K)
+    public static final int TARGET_SPACING = 60 * 2;  // 2 minutes per block.
     public static final int INTERVAL = TARGET_TIMESPAN / TARGET_SPACING;
     
     /**
@@ -135,7 +135,8 @@ public abstract class NetworkParameters implements Serializable {
     /**
      * The maximum number of coins to be generated
      */
-    public static final long MAX_COINS = 21000000;
+    public static final long MAX_COINS = 2419200000; // 2.4192 billion
+      
 
     /**
      * The maximum money to be generated
