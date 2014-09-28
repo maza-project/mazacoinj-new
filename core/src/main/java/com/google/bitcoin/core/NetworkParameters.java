@@ -124,6 +124,7 @@ public abstract class NetworkParameters implements Serializable {
     public static final int TARGET_TIMESPAN_NEW = 60 * 2;  // 2 minutes per difficulty cycle, on average. (takes effect on block 100K)
     public static final int TARGET_SPACING = 60 * 2;  // 2 minutes per block.
     public static final int INTERVAL = TARGET_TIMESPAN / TARGET_SPACING;
+    public static final int INTERVAL_NEW = TARGET_TIMESPAN_NEW / TARGET_SPACING;
     
     /**
      * Blocks with a timestamp after this should enforce BIP 16, aka "Pay to script hash". This BIP changed the
