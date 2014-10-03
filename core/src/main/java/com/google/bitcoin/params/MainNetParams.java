@@ -32,19 +32,20 @@ public class MainNetParams extends NetworkParameters {
         targetTimespan = TARGET_TIMESPAN;
         maxTarget = Utils.decodeCompactBits(0x1d00ffffL);
         dumpedPrivateKeyHeader = 224; // "a"
-        addressHeader = 50; // "M" 
+        addressHeader = 50; // "M"
         p2shHeader = 9;
         acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
         port = 12835;
         packetMagic = 0xF8B503DF; // 0xF8, 0xB5, 0x03, 0xDF
         genesisBlock.setDifficultyTarget(0x1e0ffff0L);
         genesisBlock.setTime(1390747675L); // (Sun, 26 Jan 2014 14:47:55 GMT)
-        genesisBlock.setNonce(2091390249); 
+        genesisBlock.setNonce(2091390249);
         id = ID_MAINNET;
         subsidyDecreaseBlockCount = 950000;
         spendableCoinbaseDepth = 100;
         String genesisHash = genesisBlock.getHashAsString();
-        checkState(genesisHash.equals("00000c7c73d8ce604178dae13f0fc6ec0be3275614366d44b1b4b5c6e238c60c"),genesisHash);
+        checkState(genesisHash.equals("00000c7c73d8ce604178dae13f0fc6ec0be3275614366d44b1b4b5c6e238c60c"),
+                genesisHash);
 
         // This contains (at a minimum) the blocks which are not BIP30 compliant. BIP30 changed how duplicate
         // transactions are handled. Duplicated transactions could occur in the case where a coinbase had the same
