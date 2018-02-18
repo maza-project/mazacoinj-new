@@ -118,9 +118,9 @@ public abstract class NetworkParameters {
         try {
             // A script containing the difficulty bits and the following message:
             //
-            //   "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"
+            //   "February 5, 2014: The Black Hills are not for sale - 1868 Is The LAW!"
             byte[] bytes = Utils.HEX.decode
-                    ("04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73");
+                    ("04ffff001d010445466562727561727920352c20323031343a2054686520426c61636b2048696c6c7320617265206e6f7420666f722073616c65202d203138363820497320546865204c415721");
             t.addInput(new TransactionInput(n, t, bytes));
             ByteArrayOutputStream scriptPubKeyBytes = new ByteArrayOutputStream();
             Script.writeBytes(scriptPubKeyBytes, Utils.HEX.decode
@@ -135,9 +135,11 @@ public abstract class NetworkParameters {
         return genesisBlock;
     }
 
-    public static final int TARGET_TIMESPAN = 14 * 24 * 60 * 60;  // 2 weeks per difficulty cycle, on average.
-    public static final int TARGET_SPACING = 10 * 60;  // 10 minutes per block.
+    public static final int TARGET_TIMESPAN = 2 * 4 * 60;  // 8 minutes per difficulty cycle, on average upto block 100k
+    public static final int TARGET_TIMESPAN_NEW = 2 * 60;  // 2 minutes per difficulty cycle, on average, effective block 100k
+    public static final int TARGET_SPACING = 2 * 60;  // 2 minutes per block.
     public static final int INTERVAL = TARGET_TIMESPAN / TARGET_SPACING;
+    public static final int INTERVAL_NEW = TARGET_TIMESPAN_NEW / TARGET_SPACING;
     
     /**
      * Blocks with a timestamp after this should enforce BIP 16, aka "Pay to script hash". This BIP changed the
@@ -149,7 +151,7 @@ public abstract class NetworkParameters {
     /**
      * The maximum number of coins to be generated
      */
-    public static final long MAX_COINS = 21000000;
+    public static final long MAX_COINS = 24192100000; // 2.4192 billion
 
     /**
      * The maximum money to be generated
